@@ -2,13 +2,13 @@
 
 const urlParts = document.URL.split("/");
 const roomName = urlParts[urlParts.length - 1];
-const ws = new WebSocket(`ws://localhost:3000/chat/${roomName}`);
+const ws = new WebSocket(`ws://localhost:3000/chat/${roomName}`);   // initializes a new websocket protocol URL (the connection to the server)
 
 
 const name = prompt("Username?");
 
 
-/** called when connection opens, sends join info to server. */
+/** called when connection opens between browser and server, sends join info to server. */
 
 ws.onopen = function(evt) {
   console.log("open", evt);
@@ -18,7 +18,7 @@ ws.onopen = function(evt) {
 };
 
 
-/** called when msg received from server; displays it. */
+/** called when msg received by browser from server; displays it. */
 
 ws.onmessage = function(evt) {
   console.log("message", evt);
@@ -49,7 +49,7 @@ ws.onerror = function (evt) {
 };
 
 
-/** called on connection-closed; logs it. */
+/** called on connection-closed (when server closes the connection); logs it. */
 
 ws.onclose = function (evt) {
   console.log("close", evt);
