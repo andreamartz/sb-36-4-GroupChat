@@ -1,16 +1,22 @@
+/** Server-side of groupchat. */
+
+//***************************
 /** app for groupchat */
+//***************************
 
 const express = require('express');
-const app = express();
+const app = express();                  // initializes our app
 
 // serve stuff in static/ folder
 
 app.use(express.static('static/'));
 
+//***************************
 /** Handle websocket chat */
+//***************************
 
 // allow for app.ws routes for websocket routes
-const wsExpress = require('express-ws')(app);
+const wsExpress = require('express-ws')(app);  // execute the websocket with app, which must have been initialized above this line
 
 const ChatUser = require('./ChatUser');
 
